@@ -5,11 +5,10 @@ set -e
 BUILD_PATH=$1
 BUILDPACK_PATH=$(dirname $(readlink -f ${BASH_SOURCE%/*}))
 
-cp "${BUILDPACK_PATH}/traefik.sh" "${BUILD_PATH}/.traefik.sh"
-chmod +x "${BUILD_PATH}/.traefik.sh"
+cp "${BUILDPACK_PATH}/traefik.sh" "${BUILD_PATH}/.traefik.sh" > /dev/null
+chmod +x "${BUILD_PATH}/.traefik.sh" > /dev/null
 
 cat <<EOF
----
 default_process_types:
   web: echo Running web...
 EOF
