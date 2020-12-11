@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# bin/release <build_path>
+set -e
+
+BUILD_PATH=$(cd "$1/" && pwd)
+BUILDPACK_PATH=$(dirname $(readlink -f ${BASH_SOURCE%/*}))
+
+cp "${BUILDPACK_PATH}/traefik.sh" "${BUILD_PATH}/traefik.sh"
+chmod +x "${BUILD_PATH}/traefik.sh"
+
+cat <<EOF
+---
+default_process_types:
+  web: /home/vcap/app/traefik.sh
+EOF

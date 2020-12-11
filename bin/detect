@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# bin/detect <build_path>
+set -e
+
+echo "Detect OK"
+exit 0

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# bin/finalize <build_path> <cache_path> <deps_path> <index>
+set -e
+
+BUILD_PATH=$(cd "$1/" && pwd)
+CACHE_PATH=$2
+DEPS_PATH=$3
+INDEX=$4
+
+TRAEFIK_VERSION=2.3.5
+ARCH=amd64
+
+TRAEFIK_PATH="${DEPS_PATH}/${INDEX}/traefik"
+
+cp -v "${BUILD_PATH}/traefik.yaml" "${BUILD_PATH}/dynamic.yaml" "${TRAEFIK_PATH}/bin"
+
+mkdir -p "$BUILD_PATH/.profile.d"
+cat <<EOF > "$BUILD_PATH/.profile.d/0010_traefik.sh"
+export PATH="\$PATH:/home/vcap/deps/${INDEX}/traefik/bin"
+export TRAEFIK_YAML=/home/vcap/deps/${INDEX}/traefik/bin/traefik.yml
+EOF
