@@ -27,6 +27,9 @@ if [[ ! -f "${CACHE_PATH}/traefik.tar.gz" ]]; then
       tar zxf "${CACHE_PATH}/traefik.tar.gz"
       chmod +x traefik
     popd > /dev/null
+    echo "Deployed traefik to ${TRAEFIK_PATH}/bin"
+    FILES=`ls -1 ${TRAEFIK_PATH}/bin/`
+    echo "Executables: $FILES"
   else
     echo "Traefik checksums do not match!"
     echo "Expected: $EXPECTED_CHECKSUM"
