@@ -8,7 +8,7 @@ DEPS_PATH=$3
 INDEX=$4
 
 TRAEFIK_BIN_PATH=$( cd "${DEPS_PATH}/${INDEX}/traefik/bin" && pwd)
-
+echo "Adding traefik to path: ${TRAEFIK_BIN_PATH}"
 mkdir -p "$BUILD_PATH/.profile.d"
 cat <<EOF > "$BUILD_PATH/.profile.d/0010_traefik.sh"
 export PATH="\$PATH:$TRAEFIK_BIN_PATH"
