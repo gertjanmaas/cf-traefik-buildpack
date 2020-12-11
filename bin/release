@@ -10,5 +10,5 @@ chmod +x "${BUILD_PATH}/.traefik.sh" > /dev/null
 
 cat <<EOF
 default_process_types:
-  web: echo Running web...
+  web: ./.traefik.sh
 EOF

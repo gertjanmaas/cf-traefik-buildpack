@@ -2,7 +2,14 @@
 # bin/finalize <build_path> <cache_path> <deps_path> <index>
 set -e
 
-FILES=`ls -1 $1`
-echo $FILES
+BUILD_PATH=$1
+CACHE_PATH=$2
+DEPS_PATH=$3
+INDEX=$4
 
-exit 0
+TRAEFIK_BIN_PATH=$( cd "${DEPS_PATH}/${INDEX}/traefik/bin" && pwd)
+
+mkdir -p "$BUILD_PATH/.profile.d"
+cat <<EOF > "$BUILD_PATH/.profile.d/0010_traefik.sh"
+export PATH="\$PATH:$TRAEFIK_BIN_PATH"
+EOF
