@@ -7,7 +7,7 @@ CACHE_PATH=$2
 DEPS_PATH=$3
 INDEX=$4
 
-FILES=`ls -1 home/vcap/deps/${INDEX}/traefik/bin`
+FILES=`ls -1 /home/vcap/deps/${INDEX}/traefik/bin`
 echo "Traefik binaries: ${FILES}"
 
 mkdir -p "$BUILD_PATH/.profile.d"
