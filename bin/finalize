@@ -7,7 +7,7 @@ CACHE_PATH=$2
 DEPS_PATH=$3
 INDEX=$4
 
-FILES=`ls -1 $DEPS_PATH/${INDEX}/traefik`
+FILES=`ls -1 $DEPS_PATH/${INDEX}`
 echo "Traefik files: ${FILES}"
 
 mkdir -p "$BUILD_PATH/.profile.d"
