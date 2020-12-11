@@ -13,6 +13,7 @@ ARCH=amd64
 TRAEFIK_PATH="${DEPS_PATH}/${INDEX}/traefik"
 
 mkdir -p "${TRAEFIK_PATH}/conf"
+ls
 cp -v "traefik.yaml" "dynamic.yaml" "${TRAEFIK_PATH}/conf"
 
 mkdir -p "$BUILD_PATH/.profile.d"
