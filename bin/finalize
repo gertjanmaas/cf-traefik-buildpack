@@ -2,4 +2,7 @@
 # bin/finalize <build_path> <cache_path> <deps_path> <index>
 set -e
 
+FILES=`ls -1 $1`
+echo $FILES
+
 exit 0
