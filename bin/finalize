@@ -18,5 +18,5 @@ cp "${BUILD_PATH}/traefik.yml" "${BUILD_PATH}/dynamic.yml" "${TRAEFIK_PATH}/conf
 mkdir -p "$BUILD_PATH/.profile.d"
 cat <<EOF > "$BUILD_PATH/.profile.d/0010_traefik.sh"
 export PATH="\$PATH:/home/vcap/deps/${INDEX}/traefik/bin"
-export TRAEFIK_YAML=/home/vcap/deps/${INDEX}/traefik/conf/traefik.yml
+export TRAEFIK_YAML="/home/vcap/deps/${INDEX}/traefik/conf/traefik.yml"
 EOF
