@@ -8,12 +8,8 @@ BUILDPACK_PATH=$(dirname $(readlink -f ${BASH_SOURCE%/*}))
 cp "${BUILDPACK_PATH}/traefik.sh" "${BUILD_PATH}/.traefik.sh"
 chmod +x "${BUILD_PATH}/.traefik.sh"
 
-
-FILES=`ls -1 ${1}`
-echo $FILES
-
 cat <<EOF
 ---
 default_process_types:
-  web: /home/vcap/app/.traefik.sh
+  web: echo "Test" && /home/vcap/app/.traefik.sh
 EOF
