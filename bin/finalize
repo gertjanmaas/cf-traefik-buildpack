@@ -2,7 +2,7 @@
 # bin/finalize <build_path> <cache_path> <deps_path> <index>
 set -e
 
-BUILD_PATH=$(cd "$1/" && pwd)
+BUILD_PATH=$1
 CACHE_PATH=$2
 DEPS_PATH=$3
 INDEX=$4
