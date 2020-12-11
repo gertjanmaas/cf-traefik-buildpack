@@ -2,7 +2,7 @@
 # bin/supply <build_path> <cache_path> <deps_path> <index>
 set -e
 
-BUILD_PATH=$(cd "$1/" && pwd)1
+BUILD_PATH=$(cd "$1/" && pwd)
 CACHE_PATH=$2
 DEPS_PATH=$3
 INDEX=$4
@@ -19,6 +19,7 @@ curl -sL https://github.com/traefik/traefik/releases/download/v${TRAEFIK_VERSION
 
 EXPECTED_CHECKSUM=`cat ${CACHE_PATH}/checksums.txt | grep "traefik_v${TRAEFIK_VERSION}_linux_${ARCH}.tar.gz" | awk '{print $1}'`
 CHECKSUM=`sha256sum ${CACHE_PATH}/traefik.tar.gz | awk '{print $1}'`
+echo "Validating checksums (${EXPECTED_CHECKSUM} = ${CHECKSUM})..."
 if [[ "$CHECKSUM" == "$EXPECTED_CHECKSUM" ]]; then
   mkdir -p "${TRAEFIK_PATH}/bin"
   pushd "${TRAEFIK_PATH}/bin" > /dev/null
