@@ -7,8 +7,8 @@ CACHE_PATH=$2
 DEPS_PATH=$3
 INDEX=$4
 
-FILES=`ls -1 $DEPS_PATH/${INDEX}`
-echo "Traefik files: ${FILES}"
+FILES=`find . $DEPS_PATH/${INDEX}/`
+echo "Deps: ${FILES}"
 
 mkdir -p "$BUILD_PATH/.profile.d"
 cat <<EOF > "$BUILD_PATH/.profile.d/0010_traefik.sh"
