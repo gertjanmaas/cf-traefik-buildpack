@@ -11,5 +11,5 @@ chmod +x "${BUILD_PATH}/.traefik.sh"
 cat <<EOF
 ---
 default_process_types:
-  web: echo "Test" && /home/vcap/app/.traefik.sh
+  web: echo Running web...
 EOF
