@@ -15,6 +15,7 @@ TRAEFIK_PATH="${DEPS_PATH}/${INDEX}/traefik"
 mkdir -p "${TRAEFIK_PATH}/conf"
 cp "${BUILD_PATH}/traefik.yml" "${BUILD_PATH}/dynamic.yml" "${TRAEFIK_PATH}/conf"
 
+echo "Creating env script in: $BUILD_PATH/.profile.d ($(cd $BUILD_PATH && pwd))"
 mkdir -p "$BUILD_PATH/.profile.d"
 cat <<EOF > "$BUILD_PATH/.profile.d/0010_traefik.sh"
 export PATH="\$PATH:/home/vcap/deps/${INDEX}/traefik/bin"
