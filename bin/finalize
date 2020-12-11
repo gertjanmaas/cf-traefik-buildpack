@@ -7,7 +7,7 @@ CACHE_PATH=$2
 DEPS_PATH=$3
 INDEX=$4
 
-FILES=`ls -1 /home/vcap/deps/${INDEX}`
+FILES=`ls -1 $DEPS_PATH/${INDEX}`
 echo "Buildpack deps: ${FILES}"
 
 mkdir -p "$BUILD_PATH/.profile.d"
