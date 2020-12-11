@@ -2,7 +2,7 @@
 # bin/release <build_path>
 set -e
 
-BUILD_PATH=$(cd "$1/" && pwd)
+BUILD_PATH=$1
 BUILDPACK_PATH=$(dirname $(readlink -f ${BASH_SOURCE%/*}))
 
 cp "${BUILDPACK_PATH}/traefik.sh" "${BUILD_PATH}/traefik.sh"
