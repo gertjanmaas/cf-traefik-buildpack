@@ -18,7 +18,7 @@ if [[ ! -f "${CACHE_PATH}/traefik.${TRAEFIK_VERSION}.tar.gz" ]]; then
   curl -sL https://github.com/traefik/traefik/releases/download/v${TRAEFIK_VERSION}/traefik_v${TRAEFIK_VERSION}_linux_${ARCH}.tar.gz -o ${CACHE_PATH}/traefik.${TRAEFIK_VERSION}.tar.gz
   echo "Downloading checksums..."
   curl -sL https://github.com/traefik/traefik/releases/download/v${TRAEFIK_VERSION}/traefik_v${TRAEFIK_VERSION}_checksums.txt -o ${CACHE_PATH}/${TRAEFIK_VERSION}_checksums.txt
-  cat ${CACHE_PATH}/${TRAEFIK_VERSION}_checksums.txt | grep "traefik_v${TRAEFIK_VERSION}_linux_${ARCH}.tar.gz"
+  cat ${CACHE_PATH}/${TRAEFIK_VERSION}_checksums.txt
   EXPECTED_CHECKSUM=`cat ${CACHE_PATH}/${TRAEFIK_VERSION}_checksums.txt | grep "traefik_v${TRAEFIK_VERSION}_linux_${ARCH}.tar.gz" | awk '{print $1}'`
   CHECKSUM=`sha256sum ${CACHE_PATH}/traefik.${TRAEFIK_VERSION}.tar.gz | awk '{print $1}'`
   echo "Validating checksums..."
