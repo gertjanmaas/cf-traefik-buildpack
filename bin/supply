@@ -15,12 +15,11 @@ trap "rm \"${CACHE_PATH}/traefik.${TRAEFIK_VERSION}.tar.gz\"" EXIT
 
 if [[ ! -f "${CACHE_PATH}/traefik.${TRAEFIK_VERSION}.tar.gz" ]]; then
   echo "Downloading Traefik (${TRAEFIK_VERSION}) binaries..."
-  curl -sL https://github.com/traefik/traefik/releases/download/v${TRAEFIK_VERSION}/traefik_v${TRAEFIK_VERSION}_linux_${ARCH}.tar.gz -o ${CACHE_PATH}/traefik.${TRAEFIK_VERSION}.tar.gz
+  curl -sL https://github.com/traefik/traefik/releases/download/v${TRAEFIK_VERSION}/traefik_v${TRAEFIK_VERSION}_linux_${TRAEFIK_ARCH}.tar.gz -o ${CACHE_PATH}/traefik.${TRAEFIK_VERSION}.tar.gz
   echo "Downloading checksums..."
   curl -sL https://github.com/traefik/traefik/releases/download/v${TRAEFIK_VERSION}/traefik_v${TRAEFIK_VERSION}_checksums.txt -o ${CACHE_PATH}/${TRAEFIK_VERSION}_checksums.txt
-  echo "traefik_v${TRAEFIK_VERSION}_linux_${ARCH}.tar.gz"
-  cat ${CACHE_PATH}/${TRAEFIK_VERSION}_checksums.txt
-  EXPECTED_CHECKSUM=`cat ${CACHE_PATH}/${TRAEFIK_VERSION}_checksums.txt | grep "traefik_v${TRAEFIK_VERSION}_linux_${ARCH}.tar.gz" | awk '{print $1}'`
+  
+  EXPECTED_CHECKSUM=`cat ${CACHE_PATH}/${TRAEFIK_VERSION}_checksums.txt | grep "traefik_v${TRAEFIK_VERSION}_linux_${TRAEFIK_ARCH}.tar.gz" | awk '{print $1}'`
   CHECKSUM=`sha256sum ${CACHE_PATH}/traefik.${TRAEFIK_VERSION}.tar.gz | awk '{print $1}'`
   echo "Validating checksums..."
   if [[ "$CHECKSUM" == "$EXPECTED_CHECKSUM" ]]; then
