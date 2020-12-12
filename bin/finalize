@@ -11,5 +11,3 @@ mkdir -p "$BUILD_PATH/.profile.d"
 cat <<EOF > "$BUILD_PATH/.profile.d/traefik.sh"
 export PATH="\$PATH:/home/vcap/deps/${INDEX}/traefik/bin/"
 EOF
-
-cat $BUILD_PATH/.profile.d/traefik.sh
